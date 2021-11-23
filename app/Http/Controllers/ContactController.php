@@ -34,6 +34,12 @@ class ContactController extends Controller
     {
         return view('contacts.create' );
     }
+    public function newCreate()
+    {
+        return view('contacts.create' );
+    }
+
+
 
     /**
      * Store a newly created resource in storage.

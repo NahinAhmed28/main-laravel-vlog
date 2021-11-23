@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
@@ -29,21 +31,14 @@ Route::get('/', function () {
 Route::resource('categories', CategoryController::class);
 Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);
-Route::resource('contacts', ContactController::class);
 Route::resource('users', UserController::class);
 Route::resource('members', MemberController::class);
 Route::resource('groups', GroupController::class);
-
-
-
-
-Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function () {
-    Route::get('/', 'HomeController@index')->name('user_dashboard');
+Route::get('contact/create/new' ,  [ContactController::class, 'newCreate'])->name('new.contact');
+Route::middleware(['admin'])->group(function () {
+    Route::resource('contacts', ContactController::class);
 });
 
-Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
-    Route::get('/', 'HomeController@index')->name('admin_dashboard');
-});
 
 
 Auth::routes();
