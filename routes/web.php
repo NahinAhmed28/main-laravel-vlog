@@ -7,6 +7,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\GroupController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,7 +32,18 @@ Route::resource('comments', CommentController::class);
 Route::resource('contacts', ContactController::class);
 Route::resource('users', UserController::class);
 Route::resource('members', MemberController::class);
+Route::resource('groups', GroupController::class);
 
+
+
+
+Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function () {
+    Route::get('/', 'HomeController@index')->name('user_dashboard');
+});
+
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
+    Route::get('/', 'HomeController@index')->name('admin_dashboard');
+});
 
 
 Auth::routes();

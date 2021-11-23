@@ -19,7 +19,9 @@ class CreateMembersTable extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('education');
-            $table->string('role');
+            $table->foreignId('group_id')->constrained()->onDelete('cascade');
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

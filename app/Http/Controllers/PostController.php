@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public $postModel;
-    public function __construct(Post $post)
+    public $categoryModel;
+    public function __construct(Post $post,Category $category )
     {
         $this->postModel = $post;
+        $this->categoryModel = $category;
     }
     /**
      * Display a listing of the resource.
@@ -19,10 +22,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = $this->postModel->get();
+        $data = [
+            'posts' =>$this->postModel->get(),
+            'categories' =>  $this->categoryModel->get()
+        ];
 
-
-        return view('posts.index', compact('posts'));
+        return view('posts.index', $data);
     }
 
     /**
@@ -32,7 +37,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create' );
+        $data = [
+            'categories' =>  $this->categoryModel->get(['id','title']),
+        ];
+        return view('posts.create', $data );
     }
 
     /**
@@ -43,15 +51,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $rand = mt_rand(100000 , 9999999);
         $request->validate([
             'image' => 'mimes:jpeg,bmp,png'
         ]);
+if ($request->hasFile('image')){
+    $imageName = $rand . time() . '.' .$request->image->extension();
+    $request->image->move('images',$imageName);
 
+}
         $value = $this->postModel->create([
             'title' => $request->title,
             'description' => $request->description,
             "file_path" => $request->file->hashName(),
-            "category" => $request->category,
+            "category_id" => $request->category_id,
         ]);
         if ($value) {
             return redirect()->route('posts.index');

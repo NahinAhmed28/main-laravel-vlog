@@ -36,13 +36,15 @@
 
 
 
-    <div class="form-row">
-        <div class="col-md-6 mb-3">
-            <label for="role">Role</label>
-            <input type="text" class="form-control" id="role" name="role" placeholder="Enter role"  required>
-        </div>
+    <div class="col-md-6 mb-3">
+        <label for="device">Group</label>
+        <select class="custom-select" id="inputGroupSelect03" name="group_id">
+            <option selected>Choose...</option>
+            @foreach($groups as $group)
+                <option value="{{$group->id}}">{{$group->name}}</option>
+            @endforeach
+        </select>
     </div>
-
 
 
 

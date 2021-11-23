@@ -67,6 +67,7 @@
                     </form>
                 </div>
             </div>
+            <h4 class="text-center m-3" style="font-family: 'Times New Roman', serif;">Dont Have An Id ?  <a href="{{route('register')}}"> Register Now ! </a> </h4>
         </div>
     </div>
 </div>

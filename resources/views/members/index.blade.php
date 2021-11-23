@@ -12,7 +12,8 @@
             <th scope="col">Email</th>
             <th scope="col">Address</th>
             <th scope="col">Education</th>
-            <th scope="col">Role</th>
+            <th scope="col">Group</th>
+            <th scope="col">created at</th>
 
 
         </tr>
@@ -27,7 +28,9 @@
                 <td>{{$member->email}}</td>
                 <td> {{$member->address}}</td>
                 <td> {{$member->education}}</td>
-                <td> {{$member->role}}</td>
+                <td>{{$member->getGroupName($member->group_id)}}</td>
+                <td>{{ \Carbon\Carbon::parse($member->created_at)->diffForHumans() }}</td>
+
 
 
             </tr>

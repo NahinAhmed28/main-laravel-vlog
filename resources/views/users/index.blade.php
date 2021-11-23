@@ -10,6 +10,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Role</th>
             <th>Created at</th>
 
         </tr>
@@ -21,6 +22,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
+                <td>{{ $user->role }}</td>
                 <td>{{ \Carbon\Carbon::parse($user->created_at)->diffForHumans() }}</td>
 
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="col-md-6" style="display: block;margin: 0 auto;">
-        <a class="btn btn-warning" href="{{route('categories.create')}}" role="button">  @include('layouts.rightarrow')Create Contact Form</a>
+        <a class="btn btn-warning" href="{{route('contacts.create')}}" role="button">  @include('layouts.rightarrow')Create Contact Form</a>
     </div>
 <h3>Only admin can see below <br> User will be redirected to create contact form</h3>
     <table class="table mt-3">

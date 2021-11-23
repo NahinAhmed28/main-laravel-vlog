@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 
+
 class CategoryController extends Controller
 {
     public $categoryModel;
@@ -22,10 +23,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = $this->categoryModel->get();
-
-
         return view('categories.index',compact('categories'));
-
 
     }
 
@@ -48,6 +46,7 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
 
     {
+        $rand = mt_rand(100000 , 9999999);
             $request->validate([
                 'image' => 'mimes:jpeg,bmp,png'
             ]);
@@ -55,7 +54,7 @@ class CategoryController extends Controller
             $value = $this->categoryModel->create([
                 'title' => $request->title,
                 'description' => $request->description,
-                "file_path" => $request->file->hashName(),
+                'file_path' => $request->description,
             ]);
             if ($value) {
                 return redirect()->route('categories.index');

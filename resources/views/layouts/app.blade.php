@@ -142,9 +142,10 @@
                     <a href="{{route('categories.index')}}" class="list-group-item list-group-item-action bg-light">Category</a>
                     <a href="{{route('posts.index')}}" class="list-group-item list-group-item-action bg-light">Post</a>
                     <a href="{{route('comments.index')}}" class="list-group-item list-group-item-action bg-light">Comment</a>
-                    <a href="{{route('members.index')}}" class="list-group-item list-group-item-action bg-light">All Members Info</a>
-                    <a href="{{route('users.index')}}" class="list-group-item list-group-item-action bg-light">Users</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Roles</a>
+{{--                    <a href="{{route('members.index')}}" class="list-group-item list-group-item-action bg-light">All Members Info</a>--}}
+{{--                    <a href="{{route('groups.index')}}" class="list-group-item list-group-item-action bg-light">Groups</a>--}}
+                    <a href="{{route('users.index')}}" class="list-group-item list-group-item-action bg-light">registered Users</a>
+
                 </div>
                 </div>
                 <!-- /#sidebar-wrapper -->

@@ -20,11 +20,14 @@
         </div>
     </div>
 
-    <div class="form-row">
-        <div class="col-md-6 mb-3">
-            <label for="category">Category</label>
-            <input type="text" class="form-control" id="category" name="category" placeholder="Enter Category ID"  required>
-        </div>
+    <div class="col-md-6 mb-3">
+        <label for="device">Category</label>
+        <select class="custom-select" id="inputGroupSelect03" name="category_id">
+            <option selected>Choose...</option>
+            @foreach($categories as $category)
+                <option value="{{$category->id}}">{{$category->title}}</option>
+            @endforeach
+        </select>
     </div>
 
 

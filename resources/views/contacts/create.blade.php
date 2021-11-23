@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <strong>Create New category </strong>
-<form action="{{route('categories.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('contacts.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-row">
         <div class="col-md-6 mb-3">

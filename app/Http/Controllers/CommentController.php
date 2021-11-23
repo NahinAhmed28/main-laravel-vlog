@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    public $commentModel;
+    public $postModel;
+    public function __construct(Comment $comment, Post $post)
+    {
+        $this->commentModel= $comment;
+        $this->postModel= $post;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,11 @@ class CommentController extends Controller
      */
     public function index()
     {
-        return view('comments.index' );
+        $data = [
+            'posts' =>$this->postModel->get(),
+            'comments' =>  $this->commentModel->get()
+        ];
+        return view('comments.index', $data );
     }
 
     /**
@@ -24,7 +37,10 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'posts' =>  $this->postModel->get(['id','title']),
+        ];
+        return view('comments.create', $data );
     }
 
     /**
@@ -35,7 +51,17 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $value = $this->commentModel->create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'post_id' => $request->post_id,
+        ]);
+        if ($value) {
+            return redirect()->route('comments.index');
+        } else {
+            return redirect()->route('comments.create');
+
+        }
     }
 
     /**

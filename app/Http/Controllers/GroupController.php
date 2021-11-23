@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Member;
 use App\Models\Group;
+
 use Illuminate\Http\Request;
 
-class MemberController extends Controller
+class GroupController extends Controller
 {
-    public $memberModel;
-    public $groupModel;
-    public function __construct(Member $member, Group $group)
-    {
-        $this->memberModel= $member;
-        $this->groupModel = $group;
-    }
+    /**
+     * @var Group
+     */
+    public $model;
 
+    public function __construct(Group $group)
+    {
+
+        $this->model = $group;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,14 +25,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $data = [
-            'members' =>$this->memberModel->get(),
-            'groups' =>  $this->groupModel->get()
-        ];
-
-
-       return view('members.index' , $data );
-
+        $groups = Group::all();
+        return view('groups.index' , compact('groups') );
     }
 
     /**
@@ -40,12 +36,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        $data = [
-            'groups' =>  $this->groupModel->get(['id','name']),
-            ];
-        return view ('members.create',$data);
-
-
+        return view ('groups.create');
     }
 
     /**
@@ -56,22 +47,17 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $query= $this->memberModel->create([
-
+        $query= $this->model->create([
             'name'=>$request->name,
-            'email'=>$request->email,
-            'address'=>$request->address,
-            'education'=>implode(",",$request->input('education',[])),
-            'group_id'=>$request->group_id,
-
+            'description'=>$request->description
         ]);
 
         if ($query)
         {
-            return redirect()->route('members.index');
+            return redirect()->route('groups.index');
         }else
         {
-            return redirect()->route('members.create');
+            return redirect()->route('groups.create');
 
         }
     }
@@ -79,10 +65,10 @@ class MemberController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Member  $member
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function show(Member $member)
+    public function show(Group $group)
     {
         //
     }
@@ -90,10 +76,10 @@ class MemberController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Member  $member
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function edit(Member $member)
+    public function edit(Group $group)
     {
         //
     }
@@ -102,10 +88,10 @@ class MemberController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Member  $member
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Member $member)
+    public function update(Request $request, Group $group)
     {
         //
     }
@@ -113,10 +99,10 @@ class MemberController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Member  $member
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Member $member)
+    public function destroy(Group $group)
     {
         //
     }

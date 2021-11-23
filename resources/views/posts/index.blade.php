@@ -9,9 +9,11 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Image</th>
-            <th scope="col">category</th>
+
             <th scope="col">Title</th>
             <th scope="col">Description</th>
+            <th scope="col">Category</th>
+            <th scope="col">Created At</th>
 
 
         </tr>
@@ -23,10 +25,10 @@
 
                 <td>{{$post->id}}</td>
                 <td>{{$post->id}}</td>
-                <td>{{$post->category}}</td>
-                <td> {{$post->title}}</td>
-                <td> {{$post->description}}</td>
-
+                <td>{{$post->title}}</td>
+                <td>{{$post->description}}</td>
+                <td>{{$post->getCategoryName($post->category_id)}}</td>
+                <td>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</td>
 
             </tr>
 
