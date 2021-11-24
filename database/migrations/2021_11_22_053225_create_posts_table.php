@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('description');
             $table->string('file_path')->nullable();
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('comment_id')->nullable();
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }

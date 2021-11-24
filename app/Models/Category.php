@@ -12,8 +12,12 @@ class Category extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function setNameAttribute( $value)
-    {
-        $this->attributes['title'] = ucfirst($value);
-    }
+
+
+//    public function setNameAttribute( $value)
+//    {
+//        $this->attributes['title'] = ucfirst($value);
+//    }
+
+
 }

@@ -22,26 +22,27 @@ use App\Http\Controllers\GroupController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
 
 
 
-Route::resource('categories', CategoryController::class);
-Route::resource('posts', PostController::class);
-Route::resource('comments', CommentController::class);
-Route::resource('users', UserController::class);
-Route::resource('members', MemberController::class);
-Route::resource('groups', GroupController::class);
+
 Route::get('contact/create/new' ,  [ContactController::class, 'newCreate'])->name('new.contact');
-Route::middleware(['admin'])->group(function () {
+
+Route::middleware(['admin','auth'])->group(function () {
     Route::resource('contacts', ContactController::class);
+    Route::resource('admin/categories', CategoryController::class);
+    Route::resource('admin/posts', PostController::class);
+    Route::resource('admin/comments', CommentController::class);
+    Route::resource('admin/users', UserController::class);
+    Route::resource('admin/members', MemberController::class);
+    Route::resource('admin/groups', GroupController::class);
 });
 
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
     public $postModel;
     public $categoryModel;
     public function __construct(Post $post,Category $category )
     {
+
         $this->postModel = $post;
         $this->categoryModel = $category;
     }
@@ -26,8 +28,9 @@ class PostController extends Controller
             'posts' =>$this->postModel->get(),
             'categories' =>  $this->categoryModel->get()
         ];
+        return view('admin.posts.index', $data) ;
 
-        return view('posts.index', $data);
+
     }
 
     /**
@@ -40,7 +43,7 @@ class PostController extends Controller
         $data = [
             'categories' =>  $this->categoryModel->get(['id','title']),
         ];
-        return view('posts.create', $data );
+        return view('admin.posts.create', $data );
     }
 
     /**
@@ -51,20 +54,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $rand = mt_rand(100000 , 9999999);
+
         $request->validate([
             'image' => 'mimes:jpeg,bmp,png'
         ]);
-if ($request->hasFile('image')){
-    $imageName = $rand . time() . '.' .$request->image->extension();
-    $request->image->move('images',$imageName);
 
-}
         $value = $this->postModel->create([
             'title' => $request->title,
             'description' => $request->description,
-            "file_path" => $request->file->hashName(),
-            "category_id" => $request->category_id,
+            'file_path' => $request->title,
+            'category_id' => $request->category_id,
         ]);
         if ($value) {
             return redirect()->route('posts.index');
@@ -117,5 +116,13 @@ if ($request->hasFile('image')){
     public function destroy(Post $post)
     {
         //
+    }
+
+    public function newPost(){
+        $data = [
+            'posts' =>$this->postModel->get(),
+            'categories' =>  $this->categoryModel->get()
+        ];
+        return view('user.posts.index', $data) ;
     }
 }

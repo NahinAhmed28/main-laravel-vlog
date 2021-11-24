@@ -12,6 +12,7 @@ class CategoryController extends Controller
     public $categoryModel;
     public function __construct(Category $category)
     {
+
         $this->categoryModel = $category;
     }
     /**
@@ -23,7 +24,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = $this->categoryModel->get();
-        return view('categories.index',compact('categories'));
+        return view('admin.categories.index',compact('categories'));
 
     }
 
@@ -34,7 +35,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create' );
+        return view('admin.categories.create' );
     }
 
     /**
@@ -46,7 +47,7 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
 
     {
-        $rand = mt_rand(100000 , 9999999);
+
             $request->validate([
                 'image' => 'mimes:jpeg,bmp,png'
             ]);
@@ -54,7 +55,7 @@ class CategoryController extends Controller
             $value = $this->categoryModel->create([
                 'title' => $request->title,
                 'description' => $request->description,
-                'file_path' => $request->description,
+                'file_path' => $request->title,
             ]);
             if ($value) {
                 return redirect()->route('categories.index');
@@ -109,4 +110,9 @@ class CategoryController extends Controller
     {
         //
     }
+public function newCategory(){
+    $categories = $this->categoryModel->get();
+    return view('user.categories.index',compact('categories'));
+        }
+
 }

@@ -12,6 +12,7 @@ class CommentController extends Controller
     public $postModel;
     public function __construct(Comment $comment, Post $post)
     {
+
         $this->commentModel= $comment;
         $this->postModel= $post;
     }
@@ -27,7 +28,7 @@ class CommentController extends Controller
             'posts' =>$this->postModel->get(),
             'comments' =>  $this->commentModel->get()
         ];
-        return view('comments.index', $data );
+        return view('admin.comments.index', $data );
     }
 
     /**
@@ -40,7 +41,7 @@ class CommentController extends Controller
         $data = [
             'posts' =>  $this->postModel->get(['id','title']),
         ];
-        return view('comments.create', $data );
+        return view('admin.comments.create', $data );
     }
 
     /**
@@ -107,5 +108,13 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         //
+    }
+
+    public function newComment(){
+        $data = [
+            'posts' =>$this->postModel->get(),
+            'comments' =>  $this->commentModel->get()
+        ];
+        return view('user.comments.index', $data );
     }
 }

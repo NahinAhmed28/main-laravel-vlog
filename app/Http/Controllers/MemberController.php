@@ -12,6 +12,7 @@ class MemberController extends Controller
     public $groupModel;
     public function __construct(Member $member, Group $group)
     {
+
         $this->memberModel= $member;
         $this->groupModel = $group;
     }
@@ -29,7 +30,7 @@ class MemberController extends Controller
         ];
 
 
-       return view('members.index' , $data );
+       return view('admin.members.index' , $data );
 
     }
 
@@ -43,7 +44,7 @@ class MemberController extends Controller
         $data = [
             'groups' =>  $this->groupModel->get(['id','name']),
             ];
-        return view ('members.create',$data);
+        return view ('admin.members.create',$data);
 
 
     }

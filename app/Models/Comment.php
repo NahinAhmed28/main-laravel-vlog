@@ -9,6 +9,7 @@ class Comment extends Model
 {
     protected $guarded = ['id'];
     use HasFactory;
+
     public function post(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Post::class);
@@ -16,6 +17,6 @@ class Comment extends Model
 
     public function getPostName($id)
     {
-        return Category::find($id)->title;
+        return Post::find($id)->title;
     }
 }

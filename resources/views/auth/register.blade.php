@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('admin.layouts.header')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -60,7 +59,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-
+                        <h5>12345678</h5>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

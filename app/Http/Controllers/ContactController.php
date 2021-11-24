@@ -10,6 +10,7 @@ class ContactController extends Controller
     public $contactModel;
     public function __construct(Contact $contact)
     {
+
         $this->contactModel = $contact;
     }
     /**
@@ -21,7 +22,7 @@ class ContactController extends Controller
     {
         $contacts = $this->contactModel->get();
 
-        return view('contacts.index', compact('contacts'));
+        return view('admin.contacts.index', compact('contacts'));
 
     }
 
@@ -32,11 +33,11 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('contacts.create' );
+        return view('admin.contacts.create' );
     }
     public function newCreate()
     {
-        return view('contacts.create' );
+        return view('admin.contacts.create' );
     }
 
 
@@ -56,9 +57,9 @@ class ContactController extends Controller
             "message" => $request->message,
         ]);
         if ($value) {
-            return redirect()->route('contacts.index');
-        } else {
             return redirect()->route('contacts.create');
+        } else {
+            return redirect()->route('home');
 
         }
     }

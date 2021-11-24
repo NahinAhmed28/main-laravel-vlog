@@ -15,7 +15,7 @@ class Member extends Model
         return $this->belongsTo(Group::class);
     }
 
-    public function getGroupName($id)
+    public function getGroupNames($id)
     {
         return Group::find($id)->name;
     }
