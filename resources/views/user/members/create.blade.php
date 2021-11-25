@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('user.layouts.app')
 @section('content')
     <strong>Create New member </strong>
 <form action="{{route('members.store')}}" method="POST" enctype="multipart/form-data">

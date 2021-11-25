@@ -26,7 +26,7 @@
 
     <div class="form-row">
         <div class="col-md-6 mb-3">
-            <label for="Name">Description</label>
+            <label for="Name">Comment</label>
             <input type="text" class="form-control" id="description" name="description" placeholder="Enter Title"  required>
         </div>
     </div>

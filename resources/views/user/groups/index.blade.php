@@ -1,9 +1,7 @@
-@extends('admin.layouts.app')
+@extends('user.layouts.app')
 @section('content')
 
-    <a href="{{route('groups.create')}}" style="float: right" class="btn btn-warning btn-sm" title="Add New group">
-        @include('admin.layouts.rightarrow')   <i class="fa fa-plus" aria-hidden="true"></i> Add New group
-    </a>
+
     <br/>
     <br/>
 

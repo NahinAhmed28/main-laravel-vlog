@@ -35,9 +35,9 @@ class ContactController extends Controller
     {
         return view('admin.contacts.create' );
     }
-    public function newCreate()
+    public function userContact()
     {
-        return view('admin.contacts.create' );
+        return view('user.contacts.create' );
     }
 
 

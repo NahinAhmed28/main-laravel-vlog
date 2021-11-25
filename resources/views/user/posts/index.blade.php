@@ -1,7 +1,7 @@
-@extends('admin.layouts.app')
+@extends('user.layouts.app')
 @section('content')
     <div class="col-md-6" style="display: block;margin: 0 auto;">
-        <a class="btn btn-warning" href="{{route('posts.create')}}" role="button">  @include('admin.layouts.rightarrow') Add New Post</a>
+        <a class="btn btn-warning" href="{{route('user.postCreate')}}" role="button">  @include('user.layouts.rightarrow') Add New Post</a>
     </div>
 
     <table class="table mt-3">

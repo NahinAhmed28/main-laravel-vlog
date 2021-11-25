@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('user.layouts.app')
 @section('content')
     <strong>Create New comment </strong>
 <form action="{{route('comments.store')}}" method="POST" enctype="multipart/form-data">
@@ -26,7 +26,7 @@
 
     <div class="form-row">
         <div class="col-md-6 mb-3">
-            <label for="Name">Description</label>
+            <label for="Name">Comment</label>
             <input type="text" class="form-control" id="description" name="description" placeholder="Enter Title"  required>
         </div>
     </div>

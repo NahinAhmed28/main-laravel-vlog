@@ -30,6 +30,14 @@ class CommentController extends Controller
         ];
         return view('admin.comments.index', $data );
     }
+ public function userComment()
+    {
+        $data = [
+            'posts' =>$this->postModel->get(),
+            'comments' =>  $this->commentModel->get()
+        ];
+        return view('user.comments.index', $data );
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -42,6 +50,13 @@ class CommentController extends Controller
             'posts' =>  $this->postModel->get(['id','title']),
         ];
         return view('admin.comments.create', $data );
+    }
+ public function userCommentCreate()
+    {
+        $data = [
+            'posts' =>  $this->postModel->get(['id','title']),
+        ];
+        return view('user.comments.create', $data );
     }
 
     /**

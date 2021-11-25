@@ -1,8 +1,6 @@
-@extends('admin.layouts.app')
+@extends('user.layouts.app')
 @section('content')
-    <div class="col-md-6" style="display: block;margin: 0 auto;">
-        <a class="btn btn-warning" href="{{route('categories.create')}}" role="button">  @include('admin.layouts.rightarrow')Add New Category</a>
-    </div>
+
 
 
     <table class="table mt-3">

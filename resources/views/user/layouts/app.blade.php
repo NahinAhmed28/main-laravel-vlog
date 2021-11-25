@@ -76,7 +76,7 @@
             height: 100vh">
 
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-primary" style="font-family: 'Times New Roman', serif;" href="{{ url('/') }}">
 {{--                    {{ config('app.name', 'Laravel') }}--}}
@@ -131,7 +131,7 @@
             </div>
         </nav>
 
-        @include('admin.layouts.template')
+        @include('user.layouts.template')
                     <div class="mx-3 my-2">
         @yield('content')
                     </div>

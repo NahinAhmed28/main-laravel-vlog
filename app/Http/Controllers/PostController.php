@@ -30,6 +30,14 @@ class PostController extends Controller
         ];
         return view('admin.posts.index', $data) ;
 
+    }
+public function userPost()
+    {
+        $data = [
+            'posts' =>$this->postModel->get(),
+            'categories' =>  $this->categoryModel->get()
+        ];
+        return view('user.posts.index', $data) ;
 
     }
 
@@ -44,6 +52,13 @@ class PostController extends Controller
             'categories' =>  $this->categoryModel->get(['id','title']),
         ];
         return view('admin.posts.create', $data );
+    }
+public function userCreate()
+    {
+        $data = [
+            'categories' =>  $this->categoryModel->get(['id','title']),
+        ];
+        return view('user.posts.create', $data );
     }
 
     /**

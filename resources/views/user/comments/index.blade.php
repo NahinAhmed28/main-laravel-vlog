@@ -1,7 +1,7 @@
-@extends('admin.layouts.app')
+@extends('user.layouts.app')
 @section('content')
     <div class="col-md-6" style="display: block;margin: 0 auto;">
-        <a class="btn btn-warning" href="{{route('comments.create')}}" role="button">  @include('admin.layouts.rightarrow') Add New Comment</a>
+        <a class="btn btn-warning" href="{{route('user.commentCreate')}}" role="button">  @include('admin.layouts.rightarrow') Add New Comment</a>
     </div>
 
 

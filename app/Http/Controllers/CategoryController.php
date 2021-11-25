@@ -27,6 +27,12 @@ class CategoryController extends Controller
         return view('admin.categories.index',compact('categories'));
 
     }
+ public function userIndex()
+    {
+        $categories = $this->categoryModel->get();
+        return view('user.categories.index',compact('categories'));
+
+    }
 
     /**
      * Show the form for creating a new resource.
