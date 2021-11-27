@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use Illuminate\Http\Request;
 
 
 class CategoryController extends Controller
@@ -50,18 +51,28 @@ class CategoryController extends Controller
      * @param  \App\Http\Requests\StoreCategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategoryRequest $request)
-
+    public function store(Request $request)
     {
-
-            $request->validate([
-                'image' => 'mimes:jpeg,bmp,png'
+//        dd($request->all());
+        $request->validate([
+                'file_path' => 'mimes:jpeg,bmp,png'
             ]);
+
+        $imageFileName = null;
+        if ($request->hasFile('file_path')){
+            $addImageFile = $request->file('file_path');
+            $imageFileName = 'add_'.time() . '.' . $addImageFile->getClientOriginalExtension();
+            if (!file_exists('uploads/categoryFiles')){
+                mkdir('uploads/categoryFiles', 0777, true);
+            }
+            $addImageFile->move('uploads/categoryFiles', $imageFileName);
+        }
+//       dd($imageFileName);
 
             $value = $this->categoryModel->create([
                 'title' => $request->title,
                 'description' => $request->description,
-                'file_path' => $request->title,
+                'file_path' => $imageFileName,
             ]);
             if ($value) {
                 return redirect()->route('categories.index');
