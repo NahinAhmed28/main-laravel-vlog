@@ -18,7 +18,8 @@ class UserMiddleware
     {
 
         if(auth()->check() && auth()->user()->role_id == 2)
-        {  dd('user');
+        {
+//            dd('user');
             return $next($request);
         }
 

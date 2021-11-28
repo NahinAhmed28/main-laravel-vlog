@@ -14,10 +14,10 @@ class Category extends Model
 
 
 
-//    public function setNameAttribute( $value)
-//    {
-//        $this->attributes['title'] = ucfirst($value);
-//    }
+    public function setNameAttribute( $value)
+    {
+        $this->attributes['title'] = ucfirst($value);
+    }
 
 
 }

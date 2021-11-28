@@ -69,16 +69,16 @@
         }
         </style>
 </head>
-<body>
+<body >
 <div class="bg-image"
      style="background-image: url('http://sfwallpaper.com/images/background-image-for-website-1.jpg');
-
-            height: 100vh">
+  height: 100vh;
+">
 
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-info bg-info shadow-sm">
             <div class="container">
-                <a class="navbar-brand text-primary" style="font-family: 'Times New Roman', serif;" href="{{ url('/') }}">
+                <a class="navbar-brand text-white" style="font-family: 'Times New Roman', serif;" href="{{ url('/') }}">
 {{--                    {{ config('app.name', 'Laravel') }}--}}
                     Personal Vlog
                 </a>
