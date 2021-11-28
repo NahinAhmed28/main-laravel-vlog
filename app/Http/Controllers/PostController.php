@@ -65,19 +65,30 @@ public function userCreate()
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
 
         $request->validate([
-            'image' => 'mimes:jpeg,bmp,png'
+            'file_path' => 'mimes:jpeg,bmp,png'
         ]);
+
+        $imageFileName = null;
+        if ($request->hasFile('file_path')){
+            $addImageFile = $request->file('file_path');
+
+            $imageFileName = 'add_'.time() . '.' . $addImageFile->getClientOriginalExtension();
+            if (!file_exists('uploads/postFiles')){
+                mkdir('uploads/postFiles', 0777, true);
+            }
+            $addImageFile->move('uploads/postFiles', $imageFileName);
+        }
 
         $value = $this->postModel->create([
             'title' => $request->title,
             'description' => $request->description,
-            'file_path' => $request->title,
+            'file_path' => $imageFileName,
             'category_id' => $request->category_id,
         ]);
         if ($value) {

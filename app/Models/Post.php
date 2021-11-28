@@ -10,7 +10,7 @@ class Post extends Model
     protected $guarded = ['id'];
     use HasFactory;
 
-    public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Category::class);
     }

@@ -23,7 +23,9 @@
             <tr>
 
                 <td>{{$post->id}}</td>
-                <td>{{$post->id}}</td>
+                <td>
+                    <img src="{{asset('uploads/postFiles/'.$post->file_path)}}" width="150">
+                </td>
                 <td>{{$post->title}}</td>
                 <td>{{$post->description}}</td>
                 <td>{{$post->getCategoryName($post->category_id)}}</td>

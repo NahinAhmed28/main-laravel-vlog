@@ -20,7 +20,9 @@
             <tr>
 
                 <td>{{$category->id}}</td>
-                <td>{{$category->id}}</td>
+                <td>
+                    <img src="{{asset('uploads/categoryFiles/'.$category->file_path)}}" width="150">
+                </td>
                 <td> {{$category->title}}</td>
                 <td> {{$category->description}}</td>
 
