@@ -1,4 +1,4 @@
-<main class="py-4" >
+<main class="py-0" >
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-info border-right" id="sidebar-wrapper"  >
@@ -6,9 +6,9 @@
             <div class="list-group list-group-flush" >
                 <a href="{{route('user.home')}}" class="list-group-item list-group-item-action bg-info text-white">Dashboard</a>
                 <a href="{{route('user.contact')}}" class="list-group-item list-group-item-action bg-info text-white">Contact Us</a>
-                <a href="{{route('user.category')}}" class="list-group-item list-group-item-action bg-info text-white">Category</a>
-                <a href="{{route('user.post')}}" class="list-group-item list-group-item-action bg-info text-white">Post</a>
-                <a href="{{route('user.comment')}}" class="list-group-item list-group-item-action bg-info text-white">Comment</a>
+                <a href="{{route('user.category')}}" class="list-group-item list-group-item-action bg-info text-white">Categories</a>
+                <a href="{{route('user.post')}}" class="list-group-item list-group-item-action bg-info text-white">Posts</a>
+{{--                <a href="{{route('user.comment')}}" class="list-group-item list-group-item-action bg-info text-white">Comment</a>--}}
                 {{--                    <a href="{{route('members.index')}}" class="list-group-item list-group-item-action bg-dark text-white">All Members Info</a>--}}
 {{--                                    <a href="{{route('groups.index')}}" class="list-group-item list-group-item-action bg-dark text-white">Groups</a>--}}
 {{--                <a href="{{route('user.post')}}" class="list-group-item list-group-item-action bg-light ">registered Users</a>--}}

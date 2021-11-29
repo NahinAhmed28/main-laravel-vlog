@@ -75,12 +75,12 @@
   height: 100vh;
 ">
 
-    <div id="app">
+    <div id="app" >
         <nav class="navbar navbar-expand-md navbar-info bg-info shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-white" style="font-family: 'Times New Roman', serif;" href="{{ url('/') }}">
 {{--                    {{ config('app.name', 'Laravel') }}--}}
-                    Personal Vlog
+                    Personal Blog (User Panel)
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -132,6 +132,7 @@
         </nav>
 
         @include('user.layouts.template')
+        @include('sweetalert::alert')
                     <div class="mx-3 my-2">
         @yield('content')
                     </div>

@@ -13,6 +13,7 @@
             <th scope="col">Description</th>
             <th scope="col">Category</th>
             <th scope="col">Created At</th>
+            <th scope="col">edit details</th>
 
 
         </tr>
@@ -30,6 +31,11 @@
                 <td>{{$post->description}}</td>
                 <td>{{$post->getCategoryName($post->category_id)}}</td>
                 <td>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</td>
+                <td>
+                    <a href="{{ route('user.postEdit',[$post->id]) }}" title="View Student">
+                        <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Edit
+                        </button></a>
+                </td>
 
             </tr>
 
