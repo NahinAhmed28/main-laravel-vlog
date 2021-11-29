@@ -131,15 +131,15 @@ public function userCreate()
         return view('admin.posts.edit', $data );
 
     }
-    public function userEdit(Post $post)
-    {
-        $data = [
-            'posts' => $this->postModel->first(),
-            'categories' =>  $this->categoryModel->get(['id','title']),
-        ];
-        return view('user.posts.edit', $data );
-
-    }
+//    public function userEdit(Post $post)
+//    {
+//        $data = [
+//            'posts' => $this->postModel->first(),
+//            'categories' =>  $this->categoryModel->get(['id','title']),
+//        ];
+//        return view('user.posts.edit', $data );
+//
+//    }
 
     /**
      * Update the specified resource in storage.
@@ -177,6 +177,8 @@ public function userCreate()
             'description' => $request->description,
             'file_path' => $imageFileName,
             'category_id' => $request->category_id,
+
+
         ]);
         if ($value){
 
@@ -189,46 +191,53 @@ public function userCreate()
         }
 
     }
-    public function postUpdate(Request $request, $id)
-
-    {
-        $post= $this->postModel->findOrFail($id);
-
-
-        //upload advertise image
-        $imageFileName = $post->file_path;
-        if ($request->hasFile('file_path')) {
-            $addImageFile = $request->file('file_path');
-            $imageFileName = 'add_' . time() . '.' . $addImageFile->getClientOriginalExtension();
-            if (!file_exists('uploads/postFiles')) {
-                mkdir('uploads/postFiles', 0777, true);
-            }
-//            //delete old image if exist
-            if (file_exists('uploads/postFiles/' . $post->file_path)) {
-                unlink('uploads/postFiles/' . $post->file_path);
-            }
-            $addImageFile->move('uploads/postFiles', $imageFileName);
-        }
-
-
-
-// end update image
-        $value = $post->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'file_path' => $imageFileName,
-            'category_id' => $request->category_id,
-        ]);
-        if ($value){
-
-
-            return redirect()->route('user.post');
-        }
-        else {
-
-            return  redirect()->route('user.postCreate');
-        }
+    public function commentUpdate( Request $request , $id){
+        $post =  Post::find($id);
+        $post->comment =  $request->comment;
+        $post->update();
+        return back();
     }
+
+//    public function postUpdate(Request $request, $id)
+//
+//    {
+//        $post= $this->postModel->findOrFail($id);
+//
+//
+//        //upload advertise image
+//        $imageFileName = $post->file_path;
+//        if ($request->hasFile('file_path')) {
+//            $addImageFile = $request->file('file_path');
+//            $imageFileName = 'add_' . time() . '.' . $addImageFile->getClientOriginalExtension();
+//            if (!file_exists('uploads/postFiles')) {
+//                mkdir('uploads/postFiles', 0777, true);
+//            }
+////            //delete old image if exist
+//            if (file_exists('uploads/postFiles/' . $post->file_path)) {
+//                unlink('uploads/postFiles/' . $post->file_path);
+//            }
+//            $addImageFile->move('uploads/postFiles', $imageFileName);
+//        }
+//
+//
+//
+//// end update image
+//        $value = $post->update([
+//            'title' => $request->title,
+//            'description' => $request->description,
+//            'file_path' => $imageFileName,
+//            'category_id' => $request->category_id,
+//        ]);
+//        if ($value){
+//
+//
+//            return redirect()->route('user.post');
+//        }
+//        else {
+//
+//            return  redirect()->route('user.postCreate');
+//        }
+//    }
 
     /**
      * Remove the specified resource from storage.

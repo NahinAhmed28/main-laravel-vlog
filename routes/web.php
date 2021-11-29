@@ -34,8 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/contacts' ,  [ContactController::class, 'userContact'])->name('user.contact');
     Route::get('/user/posts' ,  [PostController::class, 'userPost'])->name('user.post');
     Route::get('/user/posts/create' ,  [PostController::class, 'userCreate'])->name('user.postCreate');
-    Route::get('/user/posts/edit' ,  [PostController::class, 'userEdit'])->name('user.postEdit');
-    Route::get('/user/posts/{id}' ,  [PostController::class, 'postUpdate'])->name('user.postUpdate');
+//    Route::get('/user/posts/edit' ,  [PostController::class, 'userEdit'])->name('user.postEdit');
+//    Route::get('/user/posts/{id}' ,  [PostController::class, 'postUpdate'])->name('user.postUpdate');
     Route::get('/user/comments' ,  [CommentController::class, 'userComment'])->name('user.comment');
     Route::get('/user/comments/create' ,  [CommentController::class, 'userCommentCreate'])->name('user.commentCreate');
 
@@ -51,6 +51,8 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::resource('admin/users', UserController::class);
     Route::resource('admin/members', MemberController::class);
     Route::resource('admin/groups', GroupController::class);
+
+    Route::post('comment/update/{id}' , [PostController::class , 'commentUpdate'])->name('comment.update');
 
 
 });
