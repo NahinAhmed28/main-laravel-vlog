@@ -131,6 +131,7 @@
             </div>
         </nav>
 
+
         @include('admin.layouts.template')
         @include('sweetalert::alert')
                     <div class="mx-3 my-2">

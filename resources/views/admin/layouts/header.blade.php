@@ -55,6 +55,8 @@
         #wrapper.toggled #sidebar-wrapper {
             margin-left: 0;
         }
+
+
         @media (min-width: 768px) {
             #sidebar-wrapper {
                 margin-left: 0;

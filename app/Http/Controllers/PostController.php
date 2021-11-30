@@ -191,9 +191,9 @@ public function userCreate()
         }
 
     }
-    public function commentUpdate( Request $request , $id){
+    public function ratingUpdate( Request $request , $id){
         $post =  Post::find($id);
-        $post->comment =  $request->comment;
+        $post->rating =  $request->rating;
         $post->update();
         return back();
     }

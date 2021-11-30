@@ -51,8 +51,7 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::resource('admin/users', UserController::class);
     Route::resource('admin/members', MemberController::class);
     Route::resource('admin/groups', GroupController::class);
-
-    Route::post('comment/update/{id}' , [PostController::class , 'commentUpdate'])->name('comment.update');
+    Route::post('admin/rating/update/{id}' , [PostController::class , 'ratingUpdate'])->name('admin.comment_update');
 
 
 });

@@ -11,18 +11,21 @@
                 <p class="card-text">Category : {{$posts->getCategoryName($posts->category_id)}}</p>
                 <p class="card-text">Created At : {{ \Carbon\Carbon::parse($posts->created_at)->diffForHumans() }}</p>
 
-                <p class="card-text"> {{ $posts->comment }} </p>
-                 <form action="{{route('comment.update',[$posts->id])}}" method="POST" enctype="multipart/form-data">
+
+                 <form action="{{route('admin.comment_update',[$posts->id])}}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                      <div class="form-row">
                          <div class="col-md-5 mb-3">
-                             <label for="comment">Comment</label>
-                             <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter comment"  >
+                             <label for="rating">Give Rating</label><br>
+                             <input name="rating" type="radio" value="Good"> Good
+                             <input name="rating" type="radio" value="Average"> Average
+                             <input name="rating" type="radio" value="Bad"> Bad
                          </div>
                      </div>
-                     <input type="submit" value="comment" class="btn btn-success">
+                     <input type="submit" value="Rate" class="btn btn-success">
                  </form>
+            <p class="card-text"><strong>Given Rating:</strong>  {{ $posts->rating }} </p>
         </div>
     </div>
 @endsection

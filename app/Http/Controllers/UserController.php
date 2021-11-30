@@ -1,13 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function __construct(){
+    public $userModel;
+    public function __construct(User $user){
         $this->middleware('auth');
+        $this->userModel = $user;
+
     }
     /**
      * Display a listing of the resource.
@@ -57,11 +61,14 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+
+            $user = User::find($id);
+
+        return view('admin.users.edit', compact('user') );
     }
 
     /**
@@ -69,11 +76,19 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $userdata= $this->userModel->findOrFail($id);
+        $userdata->phone =  $request->phone;
+        $userdata->country =  $request->country;
+        $userdata->address =  $request->address;
+        $userdata->education = implode(",",$request->input('education',[]));
+        $userdata->update();
+
+      return redirect()->route('users.index');
+        //return view('admin.users.index' );
     }
 
     /**
