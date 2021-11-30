@@ -1,6 +1,10 @@
 @extends('admin.layouts.app')
 @section('content')
     <strong>Create New comment </strong>
+
+    <div style="float: right" > <a href="{{route('comments.index')}}" class="btn-danger rounded-pill"
+                                   style="width: 50px;text-decoration: none;padding: 8px 16px;margin-right: 20rem "> Go Back </a>
+    </div>
 <form action="{{route('comments.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
 

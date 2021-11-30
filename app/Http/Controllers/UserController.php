@@ -1,22 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Post;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public $userModel;
-    public function __construct(User $user){
+    public $roleModel;
+    public function __construct(User $user, Role $role){
         $this->middleware('auth');
         $this->userModel = $user;
+        $this->roleModel = $role;
 
     }
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
@@ -28,11 +30,18 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $data = [
+            'users' =>  $this->userModel->get(),
+            'roles' =>  $this->roleModel->get(),
+        ];
+
+
+
+        return view('admin.users.create', $data );
     }
 
     /**
@@ -43,7 +52,29 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $query= $this->userModel->create([
+
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'country'=>$request->country,
+            'address'=>$request->address,
+            'education'=>implode(",",$request->input('education',[])),
+            'role_id'=>$request->role_id,
+            'password'=>$request->password,
+
+
+
+        ]);
+
+        if ($query)
+        {
+            return redirect()->route('users.index');
+        }else
+        {
+            return redirect()->route('users.create');
+
+        }
     }
 
     /**
@@ -98,6 +129,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        //
+    }
+    public function registeruser($id)
     {
         //
     }

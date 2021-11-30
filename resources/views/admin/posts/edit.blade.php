@@ -1,6 +1,9 @@
 @extends('admin.layouts.app')
 @section('content')
     <strong>Admin Edit Post </strong>
+    <div style="float: right" > <a href="{{route('posts.index')}}" class="btn-danger rounded-pill"
+                                                                     style="width: 50px;text-decoration: none;padding: 8px 16px;"> Go Back </a>
+    </div>
     <form action="{{route('posts.update',[$posts->id])}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PATCH')

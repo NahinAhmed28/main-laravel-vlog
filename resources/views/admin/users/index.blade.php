@@ -1,6 +1,8 @@
 @extends('admin.layouts.app')
 @section('content')
-
+    <div class="col-md-6" style="display: block">
+        <a class="btn btn-warning" href="{{route('users.create')}}" role="button">  @include('admin.layouts.rightarrow')Register New User</a>
+    </div>
     <table class="table mt-3">
         <thead>
         <tr>

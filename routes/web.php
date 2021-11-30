@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/comments' ,  [CommentController::class, 'userComment'])->name('user.comment');
     Route::get('/user/comments/create' ,  [CommentController::class, 'userCommentCreate'])->name('user.commentCreate');
 
+
     Route::resource('contacts', ContactController::class);
 
 });
@@ -54,7 +55,7 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::resource('admin/members', MemberController::class);
     Route::resource('admin/groups', GroupController::class);
     Route::post('admin/rating/update/{id}' , [PostController::class , 'ratingUpdate'])->name('admin.comment_update');
-
+    Route::get('/admin/newregister' ,  [CommentController::class, 'userCommentCreate'])->name('user.commentCreate');
 
 });
 

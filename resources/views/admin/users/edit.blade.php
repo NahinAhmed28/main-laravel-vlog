@@ -1,6 +1,9 @@
 @extends('admin.layouts.app')
 @section('content')
     <strong>ADD User Info </strong>
+    <div style="float: right" > <a href="{{route('users.index')}}" class="btn-danger rounded-pill"
+                                   style="width: 50px;text-decoration: none;padding: 8px 16px;margin-right: 20rem"> Go Back </a>
+    </div>
 <form action="{{route('users.update',$user->id)}}" method="post" >
     @csrf
     @method('PUT')

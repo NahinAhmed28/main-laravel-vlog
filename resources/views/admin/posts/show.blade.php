@@ -1,9 +1,13 @@
 @extends('admin.layouts.app')
 @section('content')
-    <div class="card">
-        <div class="card-header">Admin- Post Detail  Page</div>
-        <div class="card-body">
 
+    <div class="card" style="width: 1200px">
+        <div class="card-header">Admin- Post Detail  Page <div style="float: right" > <a href="{{route('posts.index')}}" class="btn-danger rounded-pill"
+                                                                                         style="width: 50px;text-decoration: none;padding: 8px 16px;"> Go Back </a>
+                                                            </div>
+        </div>
+
+        <div class="card-body">
                 <h5 class="card-title">Post Title : {{ $posts->title }}</h5>
                 <p class="card-text">ID : {{ $posts->id }}</p>
                 <img src="{{asset('uploads/postFiles/'.$posts->file_path)}}" width="150">
