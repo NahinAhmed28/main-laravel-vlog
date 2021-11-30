@@ -12,7 +12,9 @@
             <th scope="col">POST Title</th>
             <th scope="col">Description</th>
             <th scope="col">Category</th>
+            <th scope="col">Rating</th>
             <th scope="col">Created At</th>
+            <th scope="col">see details</th>
 {{--            <th scope="col">edit action</th>--}}
 
 
@@ -30,12 +32,14 @@
                 <td>{{$post->title}}</td>
                 <td>{{$post->description}}</td>
                 <td>{{$post->getCategoryName($post->category_id)}}</td>
+                <td>{{$post->rating}}</td>
+
                 <td>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</td>
-{{--                <td>--}}
-{{--                    <a href="{{ route('user.postEdit',[$post->id]) }}" title="View Student">--}}
-{{--                        <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Edit--}}
-{{--                        </button></a>--}}
-{{--                </td>--}}
+                <td>
+                     <a href="{{ route('user.postShow',[$post->id]) }}" title="View Student">
+                        <button class="btn btn-info btn-sm"> <i class="fa fa-eye" aria-hidden="true"></i> Show
+                        </button></a>
+                </td>
 
             </tr>
 

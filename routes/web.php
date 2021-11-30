@@ -34,17 +34,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/contacts' ,  [ContactController::class, 'userContact'])->name('user.contact');
     Route::get('/user/posts' ,  [PostController::class, 'userPost'])->name('user.post');
     Route::get('/user/posts/create' ,  [PostController::class, 'userCreate'])->name('user.postCreate');
-//    Route::get('/user/posts/edit' ,  [PostController::class, 'userEdit'])->name('user.postEdit');
-//    Route::get('/user/posts/{id}' ,  [PostController::class, 'postUpdate'])->name('user.postUpdate');
+    Route::post('/user/posts/store' ,  [PostController::class, 'userStore'])->name('user.postStore');
+    Route::get('/user/posts/show/{id}' ,  [PostController::class, 'userShow'])->name('user.postShow');
+    Route::post('user/rating/update/{id}' , [PostController::class , 'ratingUpdate'])->name('user.rating_update');
     Route::get('/user/comments' ,  [CommentController::class, 'userComment'])->name('user.comment');
     Route::get('/user/comments/create' ,  [CommentController::class, 'userCommentCreate'])->name('user.commentCreate');
 
+    Route::resource('contacts', ContactController::class);
 
 });
 
 
 Route::middleware(['auth','admin'])->group(function () {
-    Route::resource('contacts', ContactController::class);
+
     Route::resource('admin/categories', CategoryController::class);
     Route::resource('admin/posts', PostController::class);
     Route::resource('admin/comments', CommentController::class);

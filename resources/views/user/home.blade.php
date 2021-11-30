@@ -20,4 +20,14 @@
         </div>
     </div>
 </div>
+<div style=" display: block;margin-left: 400px; margin-top: 50px">
+    <ol class="m-3" style="width: 600px;"> <strong> User Can Access: </strong>
+        <li class="list-group-item"> Contact Admin</li>
+        <li class="list-group-item"> Only view existed categories</li>
+        <li class="list-group-item"> See details of posts</li>
+        <li class="list-group-item"> Create posts</li>
+        <li class="list-group-item"> Create comments</li>
+
+    </ol>
+</div>
 @endsection

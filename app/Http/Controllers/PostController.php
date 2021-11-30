@@ -31,7 +31,7 @@ class PostController extends Controller
         return view('admin.posts.index', $data) ;
 
     }
-public function userPost()
+        public function userPost()  //user post index
     {
         $data = [
             'posts' =>$this->postModel->get(),
@@ -53,7 +53,7 @@ public function userPost()
         ];
         return view('admin.posts.create', $data );
     }
-public function userCreate()
+    public function userCreate()  //user post create
     {
         $data = [
             'categories' =>  $this->categoryModel->get(['id','title']),
@@ -100,6 +100,44 @@ public function userCreate()
         }
     }
 
+    public function userStore(Request $request) // user post store
+    {
+//        dd($request->all());
+
+        $request->validate([
+            'file_path' => 'mimes:jpeg,bmp,png'
+        ]);
+
+        $imageFileName = null;
+        if ($request->hasFile('file_path')){
+            $addImageFile = $request->file('file_path');
+
+            $imageFileName = 'add_'.time() . '.' . $addImageFile->getClientOriginalExtension();
+            if (!file_exists('uploads/postFiles')){
+                mkdir('uploads/postFiles', 0777, true);
+            }
+            $addImageFile->move('uploads/postFiles', $imageFileName);
+        }
+
+        $value = $this->postModel->create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'file_path' => $imageFileName,
+            'category_id' => $request->category_id,
+        ]);
+        if ($value) {
+            alert()->success('Post Creat','Post is created Successfully.');
+            return redirect()->route('user.post');
+        } else {
+            alert()->error('ErrorAlert','Post is failed to create');
+            return redirect()->route('user.postCreate');
+
+        }
+    }
+
+
+
+
     /**
      * Display the specified resource.
      *
@@ -113,6 +151,14 @@ public function userCreate()
             'categories' =>  $this->categoryModel->get(['id','title']),
         ];
         return view('admin.posts.show', $data );
+    }
+ public function userShow($id)   // user post detail card show
+    {
+        $data = [
+            'posts' => $this->postModel->find($id),
+            'categories' =>  $this->categoryModel->get(['id','title']),
+        ];
+        return view('user.posts.show', $data );
     }
 
     /**
@@ -154,7 +200,7 @@ public function userCreate()
         $post= $this->postModel->findOrFail($id);
 
 
-        //upload advertise image
+                                    //upload advertise image
         $imageFileName = $post->file_path;
         if ($request->hasFile('file_path')) {
             $addImageFile = $request->file('file_path');
@@ -162,7 +208,7 @@ public function userCreate()
             if (!file_exists('uploads/postFiles')) {
                 mkdir('uploads/postFiles', 0777, true);
             }
-//            //delete old image if exist
+                        //            //delete old image if exist
             if (file_exists('uploads/postFiles/' . $post->file_path)) {
                 unlink('uploads/postFiles/' . $post->file_path);
             }
@@ -171,7 +217,7 @@ public function userCreate()
 
 
 
-// end update image
+                                        // end update image
         $value = $post->update([
             'title' => $request->title,
             'description' => $request->description,
@@ -191,6 +237,8 @@ public function userCreate()
         }
 
     }
+
+
     public function ratingUpdate( Request $request , $id){
         $post =  Post::find($id);
         $post->rating =  $request->rating;
@@ -198,46 +246,6 @@ public function userCreate()
         return back();
     }
 
-//    public function postUpdate(Request $request, $id)
-//
-//    {
-//        $post= $this->postModel->findOrFail($id);
-//
-//
-//        //upload advertise image
-//        $imageFileName = $post->file_path;
-//        if ($request->hasFile('file_path')) {
-//            $addImageFile = $request->file('file_path');
-//            $imageFileName = 'add_' . time() . '.' . $addImageFile->getClientOriginalExtension();
-//            if (!file_exists('uploads/postFiles')) {
-//                mkdir('uploads/postFiles', 0777, true);
-//            }
-////            //delete old image if exist
-//            if (file_exists('uploads/postFiles/' . $post->file_path)) {
-//                unlink('uploads/postFiles/' . $post->file_path);
-//            }
-//            $addImageFile->move('uploads/postFiles', $imageFileName);
-//        }
-//
-//
-//
-//// end update image
-//        $value = $post->update([
-//            'title' => $request->title,
-//            'description' => $request->description,
-//            'file_path' => $imageFileName,
-//            'category_id' => $request->category_id,
-//        ]);
-//        if ($value){
-//
-//
-//            return redirect()->route('user.post');
-//        }
-//        else {
-//
-//            return  redirect()->route('user.postCreate');
-//        }
-//    }
 
     /**
      * Remove the specified resource from storage.
@@ -250,11 +258,5 @@ public function userCreate()
         //
     }
 
-    public function newPost(){
-        $data = [
-            'posts' =>$this->postModel->get(),
-            'categories' =>  $this->categoryModel->get()
-        ];
-        return view('user.posts.index', $data) ;
-    }
+
 }

@@ -46,10 +46,11 @@ class ContactController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
+//        dd($request->all());
         $value = $this->contactModel->create([
             'name' => $request->name,
             'email' => $request->email,
@@ -57,9 +58,10 @@ class ContactController extends Controller
             "message" => $request->message,
         ]);
         if ($value) {
-            return redirect()->route('contacts.create');
+            return back();
         } else {
-            return redirect()->route('home');
+      return redirect()->route('user.contact');
+
 
         }
     }

@@ -136,12 +136,14 @@
                     <div class="mx-3 my-2">
         @yield('content')
                     </div>
+
                 </div>
                 <!-- /#page-content-wrapper -->
                 </div>
                 <!-- /#wrapper -->
         </main>
     </div>
+
 </div>
 </body>
 </html>

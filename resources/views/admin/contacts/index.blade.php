@@ -22,9 +22,10 @@
             <tr>
 
                 <td>{{$contact->id}}</td>
-                <td>{{$contact->id}}</td>
-                <td> {{$contact->title}}</td>
-                <td> {{$contact->description}}</td>
+                <td>{{$contact->name}}</td>
+                <td> {{$contact->email}}</td>
+                <td> {{$contact->subject}}</td>
+                <td> {{$contact->message}}</td>
 
 
             </tr>

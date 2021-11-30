@@ -5,7 +5,7 @@
             <div class="sidebar-heading text-white" style="background: linear-gradient(135deg, orange 60%, cyan);">Menu </div>
             <div class="list-group list-group-flush" >
                 <a href="{{route('admin.home')}}" class="list-group-item list-group-item-action bg-dark text-white">Dashboard</a>
-                <a href="{{route('contacts.index')}}" class="list-group-item list-group-item-action bg-dark text-white">Contact Us</a>
+                <a href="{{route('contacts.index')}}" class="list-group-item list-group-item-action bg-dark text-white">Contact Messages</a>
                 <a href="{{route('categories.index')}}" class="list-group-item list-group-item-action bg-dark text-white">Categories</a>
                 <a href="{{route('posts.index')}}" class="list-group-item list-group-item-action bg-dark text-white">Posts</a>
                 <a href="{{route('comments.index')}}" class="list-group-item list-group-item-action bg-dark text-white">Comment</a>
