@@ -32,7 +32,7 @@
 
                 <td>{{$post->description}}</td>
 
-                <td>{{$post->getCategoryName($post->category_id)}}</td>
+                <td>{{$post->category->title}}</td>
                 <td>{{$post->rating}}</td>
                 <td>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</td>
                 <td>

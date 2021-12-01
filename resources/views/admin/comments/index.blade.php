@@ -25,7 +25,7 @@
 
                 <td>{{$comment->id}}</td>
                 <td>{{$comment->post_id}}</td>
-                <td>{{$comment->getPostName($comment->post_id)}}</td>
+                <td>{{$comment->post->title}}</td>
                 <td>{{$comment->title}}</td>
                 <td>{{$comment->description}}</td>
                 <td>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</td>

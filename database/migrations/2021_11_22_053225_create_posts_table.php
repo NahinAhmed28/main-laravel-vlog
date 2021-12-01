@@ -14,15 +14,16 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
+            $table->foreignId('category_id')->constrained();
             $table->string('title');
             $table->string('description');
             $table->string('file_path')->nullable();
-            $table->unsignedBigInteger('category_id');
-//            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('comment')->nullable();
             $table->string('rating')->nullable();
+            $table->unsignedBigInteger('status')->comment('1=Actve,2=Inactive')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

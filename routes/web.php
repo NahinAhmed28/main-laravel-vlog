@@ -23,6 +23,10 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+Route::get('/blog', [App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('blog.home');
+Route::get('/blog/blog', [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('blog.blog');
+Route::get('/blog/about', [App\Http\Controllers\Frontend\AboutController::class, 'index'])->name('blog.about');
+
 Route::middleware(['admin'])->group(function () {
 Route::get('/', [App\Http\Controllers\HomeController::class, 'userAdmin'])->name('admin.home');
 });

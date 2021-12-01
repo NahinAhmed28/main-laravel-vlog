@@ -17,7 +17,9 @@ class CreateGroupsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
+            $table->unsignedBigInteger('status')->comment('1=Actve,2=Inactive')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

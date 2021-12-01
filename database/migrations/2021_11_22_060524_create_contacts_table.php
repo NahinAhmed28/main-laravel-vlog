@@ -19,7 +19,9 @@ class CreateContactsTable extends Migration
             $table->string('email');
             $table->string('subject');
             $table->string('message');
+            $table->unsignedBigInteger('status')->comment('1=Actve,2=Inactive')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

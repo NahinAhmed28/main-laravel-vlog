@@ -12,7 +12,7 @@ class Post extends Model
 
     use HasFactory;
 
-    public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Category::class);
     }

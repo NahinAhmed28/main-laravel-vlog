@@ -16,7 +16,7 @@ class Category extends Model
 
     public function posts():HasMany
     {
-        return $this->HasMany(Post::class);
+        return $this->hasMany(Post::class);
     }
 
     public function setNameAttribute( $value)
