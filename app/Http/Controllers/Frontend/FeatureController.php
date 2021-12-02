@@ -3,18 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Post;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class FeatureController extends Controller
 {
-    public $postModel;
-    public $categoryModel;
-    public function __construct(Post $post,Category $category){
-        $this->postModel = $post;
-        $this->categoryModel = $category;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -22,15 +14,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = [
-            'posts' =>$this->postModel->get(),
-            'categories' =>  $this->categoryModel->get()
-        ];
-// dd($data);
-        return view('frontend.home',$data);
+        return view('frontend.feature');
 
-
-//        return view('frontend.home');
     }
 
     /**

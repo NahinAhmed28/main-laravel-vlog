@@ -18,8 +18,12 @@ class Post extends Model
     }
 
 
-    public function getCategoryName($id)
-    {
-        return Category::find($id)->title;
-    }
+//    public function getCategoryName($id)
+//    {
+//        return Category::find($id)->title;
+//    }
+
+
+
+
 }

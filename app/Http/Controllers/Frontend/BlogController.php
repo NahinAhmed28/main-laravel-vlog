@@ -2,19 +2,38 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Post;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    public $postModel;
+    public $categoryModel;
+
+    public function __construct(Post $post,Category $category){
+        $this->postModel = $post;
+        $this->categoryModel = $category;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        return view('frontend.blog');
+
+        $data = [
+            'posts' =>$this->postModel->get(),
+            'categories' =>  $this->categoryModel->get()
+        ];
+// dd($data);
+        return view('frontend.blog',$data);
+
+
+
     }
 
     /**

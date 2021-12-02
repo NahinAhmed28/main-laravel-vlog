@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Models\Contact;
 
-class HomeController extends Controller
+
+class ContactController extends Controller
 {
-    public $postModel;
-    public $categoryModel;
-    public function __construct(Post $post,Category $category){
-        $this->postModel = $post;
-        $this->categoryModel = $category;
+    public $contactModel;
+    public function __construct(Contact $contact)
+    {
+        $this->contactModel = $contact;
     }
     /**
      * Display a listing of the resource.
@@ -22,15 +21,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = [
-            'posts' =>$this->postModel->get(),
-            'categories' =>  $this->categoryModel->get()
-        ];
-// dd($data);
-        return view('frontend.home',$data);
+        return view('frontend.contact');
 
-
-//        return view('frontend.home');
     }
 
     /**
@@ -51,9 +43,19 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
 
+        $value = $this->contactModel->create([
+            'name' => $request->name,
+            'email' => $request->email,
+            "subject" => $request->subject,
+            "message" => $request->message,
+        ]);
+        if ($value) {
+            return back();
+        } else {
+            return redirect()->route('blog.contact');
+        }
+    }
     /**
      * Display the specified resource.
      *

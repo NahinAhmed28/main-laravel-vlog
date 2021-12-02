@@ -10,7 +10,6 @@ class ContactController extends Controller
     public $contactModel;
     public function __construct(Contact $contact)
     {
-
         $this->contactModel = $contact;
     }
     /**

@@ -23,12 +23,17 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/blog', [App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('blog.home');
+Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('blog.home');
 Route::get('/blog/blog', [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('blog.blog');
 Route::get('/blog/about', [App\Http\Controllers\Frontend\AboutController::class, 'index'])->name('blog.about');
+Route::get('/blog/contact', [App\Http\Controllers\Frontend\ContactController::class, 'index'])->name('blog.contact');
+Route::post('/blog/contact/store', [App\Http\Controllers\Frontend\ContactController::class, 'store'])->name('blog.contact.store');
+Route::get('/blog/feature', [App\Http\Controllers\Frontend\FeatureController::class, 'index'])->name('blog.feature');
+
+
 
 Route::middleware(['admin'])->group(function () {
-Route::get('/', [App\Http\Controllers\HomeController::class, 'userAdmin'])->name('admin.home');
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'userAdmin'])->name('admin.home');
 });
 
 Route::middleware(['auth'])->group(function () {

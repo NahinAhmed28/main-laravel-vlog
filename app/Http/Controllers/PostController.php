@@ -30,6 +30,8 @@ class PostController extends Controller
         ];
         return view('admin.posts.index', $data) ;
 
+
+
     }
         public function userPost()  //user post index
     {

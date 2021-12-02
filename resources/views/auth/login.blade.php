@@ -1,10 +1,15 @@
 @extends('admin.layouts.header')
 
 @section('content')
-<div class="container">
+    <div class="bg-image"
+         style="background-image: url('http://sfwallpaper.com/images/background-image-for-website-1.jpg');
+
+            height: 100vh">
+
+    <div class="container" >
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="margin-top: 200px">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
@@ -30,7 +35,7 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-<h5>12345678</h5>
+<h5>password</h5>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

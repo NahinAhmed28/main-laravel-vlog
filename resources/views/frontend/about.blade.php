@@ -15,7 +15,7 @@
                         <ul>
                             <li><a href="#"><img src="{{asset('frontend/images/fb-icon.png')}}"></a></li>
                             <li><a href="#"><img src="{{asset('frontend/images/twitter-icon.png')}}"></a></li>
-{{--                            <li><a href="#"><img src="{{asset('frontend/images/instagram-icon.png')}}g"></a></li>--}}
+                            <li><a href="#"><img src="{{asset('frontend/images/instagram-icon.png')}}" alt=""></a></li>
                         </ul>
                     </div>
                     <div class="read_bt"><a href="#">Read More</a></div>

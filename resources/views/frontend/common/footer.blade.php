@@ -1,21 +1,21 @@
 <div class="footer_section layout_padding">
     <div class="container">
-        <div class="footer_logo"><a href="#"><img src="{{asset('frontend/images/footer-logo.png')}}"></a></div>
+{{--        <div class="footer_logo"><a href="#"><img src="{{asset('frontend/images/home-icon.png')}}"></a></div>--}}
         <div class="footer_menu">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">contact us</a></li>
+                <li><a href="{{route('blog.home')}}">Home</a></li>
+                <li><a href="{{route('blog.about')}}">About</a></li>
+                <li><a href="{{route('blog.blog')}}">Blog</a></li>
+                <li><a href="{{route('blog.feature')}}">Features</a></li>
+                <li><a href="{{route('blog.contact')}}">contact us</a></li>
             </ul>
         </div>
         <div class="contact_menu">
             <ul>
-                <li><a href="#"><img src="{{asset('frontend/images/call-icon.png')}}" alt="icon"></a></li>
-                <li><a href="#">Call : +01 1234567890</a></li>
-                <li><a href="#"><img src="{{asset('frontend/images/mail-icon.png')}}" alt="icon"></a></li>
-                <li><a href="#">demo@gmail.com</a></li>
+                <li><a href="#"><img src="{{asset('frontend/images/call-icon.png')}}" alt="icon"></a>
+                <a href="#">Call : +88 01521332113</a></li>
+                <li><a href="#"><img src="{{asset('frontend/images/mail-icon.png')}}" alt="icon"></a>
+                <a href="#">Nahin.ahmed28@gmail.com</a></li>
             </ul>
         </div>
     </div>
@@ -24,7 +24,7 @@
 <!-- copyright section start -->
 <div class="copyright_section">
     <div class="container">
-        <p class="copyright_text">Copyright 2020 All Right Reserved By.<a href="https://html.design"> Free  html Templates</a></p>
+        <p class="copyright_text">Copyright 2020 All Right Reserved By.<a href="#"> Nahin Ahmed</a></p>
     </div>
 </div>
 <!-- copyright section end -->
