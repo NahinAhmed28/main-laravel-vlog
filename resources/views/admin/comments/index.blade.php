@@ -8,10 +8,10 @@
     <table class="table mt-3">
         <thead>
         <tr>
-            <th scope="col">Comment ID</th>
-            <th scope="col">POST ID</th>
-            <th scope="col">POST Title</th>
-            <th scope="col">Comment Title</th>
+            <th scope="col">Comment <br> ID</th>
+            <th scope="col">POST <br> ID</th>
+            <th scope="col">POST  <br> Title</th>
+            <th scope="col">Comment <br> Title</th>
             <th scope="col">Comment<br> Description</th>
             <th scope="col">Created At</th>
 

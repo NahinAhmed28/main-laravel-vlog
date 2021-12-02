@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Post;
-use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
-class FeatureController extends Controller
+class CategoryController extends Controller
 {
     public $postModel;
     public $categoryModel;
@@ -19,20 +19,16 @@ class FeatureController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
-
     {
         $data = [
-            'posts' =>$this->postModel->all()->order_by('upload_time', 'desc')->first(),
+            'posts' =>$this->postModel->get(),
             'categories' =>  $this->categoryModel->get()
         ];
 // dd($data);
-        return view('frontend.feature',$data);
-
-//        return DB::table('posts')->order_by('upload_time', 'desc')->first();
-//        return view('frontend.feature');
+        return view('frontend.category',$data);
 
     }
 

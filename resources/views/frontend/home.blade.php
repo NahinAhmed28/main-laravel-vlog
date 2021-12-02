@@ -49,42 +49,55 @@
     <!-- banner section end -->
 
 <!-- about section start -->
-<div class="about_section layout_padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-sm-12">
-                <div class="about_img"><img src="{{asset('frontend/images/about-img.png')}}" alt=""></div>
-                <div class="like_icon"><img src="{{asset('frontend/images/like-icon.png')}}" alt=""></div>
-                <p class="post_text">Post By : 09/06/2019</p>
-                <h2 class="most_text">Most Awesome Blue Lake With Snow <br>Mountain</h2>
-                <p class="lorem_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
-                <div class="social_icon_main">
-                    <div class="social_icon">
-                        <ul>
-                            <li><a href="#"><img src="{{asset('frontend/images/fb-icon.png')}}" alt=""></a></li>
-                            <li><a href="#"><img src="{{asset('frontend/images/twitter-icon.png')}}" alt=""></a></li>
-                            <li><a href="#"><img src="{{asset('frontend/images/instagram-icon.png')}}" alt=""></a></li>
-                        </ul>
+    <div class="about_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-sm-12">
+                    <div class="about_img"><img src="{{asset('frontend/images/about-img.png')}}"></div>
+                    <div class="like_icon"><img src="{{asset('frontend/images/like-icon.png')}}"></div>
+                    <p class="post_text">Post By : 09/06/2019</p>
+                    <h2 class="most_text">Most Awesome Blue Lake With Snow <br>Mountain</h2>
+                    <p class="lorem_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
+                    <div class="social_icon_main">
+                        <div class="social_icon">
+                            <ul>
+                                <li><a href="#"><img src="{{asset('frontend/images/fb-icon.png')}}"></a></li>
+                                <li><a href="#"><img src="{{asset('frontend/images/twitter-icon.png')}}"></a></li>
+                                <li><a href="#"><img src="{{asset('frontend/images/instagram-icon.png')}}" alt=""></a></li>
+                            </ul>
+                        </div>
+                        <div class="read_bt"><a href="#">Read More</a></div>
                     </div>
-                    <div class="read_bt"><a href="#">Read More</a></div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-sm-12">
-                <div class="image_5"><img src="{{asset('images/img-5.png')}}" alt=""></div>
-                <h1 class="about_taital">About Us</h1>
-                <p class="about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
-                <div class="read_bt_1"><a href="#">Read More</a></div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="image_5"><img src="{{asset('frontend/images/img-5.png')}}"></div>
+                    <h1 class="about_taital">About Us</h1>
+                    <p class="about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
+                    <div class="read_bt_1"><a href="#">Read More</a></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- about section end -->
 
+    <!-- about section end -->
+    <!-- categories tag section start -->
+    <div class="tag_section layout_padding">
+        <div class="container">
+            <h1 class="tag_taital">Categories</h1>
+            <div class="tag_bt">
+                @foreach($categories as $category)
+                    <ul>
+                        <li class="mb-3 pt-3"><a href="#">{{$category->title}}</a></li>
+                    </ul>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- categories tag section end -->
 <!-- blog section start -->
     <h2 class="most_text text-center m-3 text-info" >Blog posts:</h2>
-    @foreach($posts as $post)
+    @foreach($posts->take(2) as $post)
         <div class="about_section layout_padding">
-
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-sm-12">
@@ -124,20 +137,7 @@
         </div>
     @endforeach
     <!-- blog section end -->
-<!-- tag section start -->
-    <div class="tag_section layout_padding">
-        <div class="container">
-            <h1 class="tag_taital">Categories</h1>
-            <div class="tag_bt">
-                @foreach($categories as $category)
-                    <ul>
-                        <li class="mb-3 pt-3"><a href="#">{{$category->title}}</a></li>
-                    </ul>
-                @endforeach
-            </div>
-        </div>
-    </div>
-<!-- tag section end -->
+
 <!-- newsletter section start -->
 <div class="about_section layout_padding">
     <h2 class="most_text text-center m-3 text-info" >NEWSLETTER :</h2>
@@ -177,7 +177,7 @@
 <!-- recent section start -->
 <div class="about_section layout_padding">
     <div class="container">
-        <h2 class="most_text text-center m-3 text-info" >RECENT :</h2>
+        <h2 class="most_text text-center m-3 text-info" >RECENT : (Feature) </h2>
         <div class="row">
             <div class="col-lg-8 col-sm-12">
                 <div class="about_img"><img src="{{asset('frontend/images/img-10.png')}}" alt=""></div>

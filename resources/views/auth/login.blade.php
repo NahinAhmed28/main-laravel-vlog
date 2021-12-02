@@ -1,5 +1,4 @@
 @extends('admin.layouts.header')
-
 @section('content')
     <div class="bg-image"
          style="background-image: url('http://sfwallpaper.com/images/background-image-for-website-1.jpg');

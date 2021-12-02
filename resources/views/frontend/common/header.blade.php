@@ -20,6 +20,9 @@
                         <a class="nav-link" href="{{route('blog.feature')}}">Features</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{route('blog.category')}}">Categoires</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{route('blog.contact')}}">Contact Us</a>
                     </li>
                     <li class="nav-item">
