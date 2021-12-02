@@ -25,7 +25,7 @@ class FeatureController extends Controller
 
     {
         $data = [
-            'posts' =>$this->postModel->all()->order_by('upload_time', 'desc')->first(),
+            'posts' =>$this->postModel->orderBy('created_at', 'desc')->first(),
             'categories' =>  $this->categoryModel->get()
         ];
 // dd($data);
