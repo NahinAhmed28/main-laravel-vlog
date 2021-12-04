@@ -23,7 +23,7 @@
             <div class="col-lg-4 col-sm-12">
                 <div class="newsletter_main">
                     <h1 class="recent_taital">Recent post</h1>
-                    @foreach($posts->take(2) as $post)
+                    @foreach($posts->take(3) as $post)
                     <div class="recent_box">
                         <div class="recent_left">
                             <div class="image_6"><img src="{{asset('uploads/postFiles/'.$post->file_path)}}"></div>
