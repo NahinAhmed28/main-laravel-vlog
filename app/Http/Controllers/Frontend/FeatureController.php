@@ -25,16 +25,17 @@ class FeatureController extends Controller
 
     {
         $data = [
-            'posts' =>$this->postModel->orderBy('created_at', 'desc')->first(),
-            'categories' =>  $this->categoryModel->get()
+            'posts' =>$this->postModel->orderBy('created_at', 'desc')->get(),
+            'categories' =>  $this->categoryModel->get(),
+
+
+
         ];
 // dd($data);
         return view('frontend.feature',$data);
 
-//        return DB::table('posts')->order_by('upload_time', 'desc')->first();
-//        return view('frontend.feature');
-
     }
+
 
     /**
      * Show the form for creating a new resource.

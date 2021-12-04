@@ -16,8 +16,8 @@ class Comment extends Model
 
     }
 
-    public function getPostName($id)
-    {
-        return Post::find($id)->title;
-    }
+//    public function getPostName($id)
+//    {
+//        return Post::find($id)->title;
+//    }
 }
