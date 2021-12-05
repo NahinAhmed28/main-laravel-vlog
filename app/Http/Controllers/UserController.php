@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -61,7 +62,7 @@ class UserController extends Controller
             'address'=>$request->address,
             'education'=>implode(",",$request->input('education',[])),
             'role_id'=>$request->role_id,
-            'password'=>$request->password,
+            'password'=>Hash::make($request->password),
 
 
 

@@ -10,18 +10,10 @@
                     <div class="about_img"><img src="{{asset('uploads/postFiles/'.$post->file_path)}}"></div>
                     <div class="like_icon"><img src="{{asset('frontend/images/like-icon.png')}}"></div>
                     <p class="post_text">Posted : {{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</p>
-                    <h2 class="most_text">{{$post->title}}<br>River</h2>
+                    <h2 class="most_text font-weight-bold">{{$post->title}}<br>River</h2>
                     <p class="lorem_text">{{$post->description}}</p>
-                    <p class="lorem_text"><strong>Category:</strong> {{$post->category->title}}</p>
-                    <p class="lorem_text"><strong>Admin rating:</strong> {{$post->rating}}</p>
-
-                    <strong>Comments:</strong> <br>
-                    {{--                    Show Comment section--}}
-                            @foreach($post->comments as $comment)
-                                  - {{$comment->description}} <br>
-                            @endforeach
-
-                    {{--                    end show comment section--}}
+                    <p class="lorem_text "><strong class="font-weight-bold">Category:</strong> {{$post->category->title}}</p>
+                    <p class="lorem_text mb-3"><h5 class="font-weight-bold">Admin rating:</h5> <h5 class="text-warning font-weight-bold">{{$post->rating}}</h5> </p>
 
                     {{--input comment section--}}
                     <form action="{{route('blog.comment',[$post->id])}}" method="POST" enctype="multipart/form-data">
@@ -31,6 +23,20 @@
                         <input type="submit" value="comment" class="btn btn-success">
                     </form>
                     {{--end input comment section--}}
+                    {{--                    Show Comment section--}}
+                    <div class="row mt-3">
+                        <div class="col-md-3 font-weight-bold text-primary"
+                                <h3 > Comments:</h3>
+                        </div>
+                        <div class="col-md-6 "
+                            @foreach($post->comments as $comment)
+                            <ul class="list-group">
+                                <li class="list-group-item" style=" border: none;"> <h5>{{$comment->title}}</h5>  <br>- {{$comment->description}} </li>
+                            </ul>
+                            @endforeach
+                        </div>
+                    </div>
+                        {{--                    end show comment section--}}
                     <div class="social_icon_main">
                         <div class="social_icon">
                             <ul>
@@ -40,7 +46,7 @@
                             </ul>
                         </div>
 
-                        <div class="read_bt"><a href="#">Read More</a></div>
+
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12">
@@ -60,5 +66,8 @@
         </div>
     </div>
     @endforeach
+
+
+
     <!-- blog section end -->
 @endsection
