@@ -2,63 +2,65 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Post;
-use App\Models\Category;
-use App\Models\Comment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Comment;
+use App\Models\Post;
 
-class BlogController extends Controller
+class CommentController extends Controller
 {
-    public $postModel;
-    public $categoryModel;
     public $commentModel;
+    public $postModel;
+    public function __construct(Comment $comment, Post $post)
+    {
 
-    public function __construct(Post $post,Category $category,Comment $comment){
-        $this->postModel = $post;
-        $this->categoryModel = $category;
         $this->commentModel= $comment;
+        $this->postModel= $post;
     }
-
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-
-        $data = [
-            'posts' =>$this->postModel->get(),
-            'categories' =>  $this->categoryModel->get(),
-
-        ];
-// dd($data);
-        return view('frontend.blog',$data);
-
-
-
+        //
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
-    public function create()
+    public function create($id)
     {
-        //
+
+    //
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+//        dd($request->all());
+
+        $post =  $this->commentModel->find($id);
+        $value = $this->commentModel->create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'post_id' => $post->id
+        ]);
+        if ($value) {
+            return redirect()->route('blog.blog');
+        } else {
+            return redirect()->route('blog.home');
+
+        }
     }
 
     /**

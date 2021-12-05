@@ -14,6 +14,11 @@
                 <p class="card-text">Description : {{ $posts->description }}</p>
                 <p class="card-text">Category : {{$posts->category_id}}</p>
                 <p class="card-text">Created At : {{ \Carbon\Carbon::parse($posts->created_at)->diffForHumans() }}</p>
+            <strong>Comments:</strong>
+            {{--                    Show Comment section--}}
+            @foreach($posts->comments as $comment)
+                - {{$comment->description}} <br>
+            @endforeach
 
 
                  <form action="{{route('admin.comment_update',[$posts->id])}}" method="POST" enctype="multipart/form-data">
@@ -21,7 +26,7 @@
 
                      <div class="form-row">
                          <div class="col-md-5 mb-3">
-                             <label for="rating">Give Rating</label><br>
+                             <label for="rating"><strong>Give Rating</strong></label><br>
                              <input name="rating" type="radio" value="Good"> Good
                              <input name="rating" type="radio" value="Average"> Average
                              <input name="rating" type="radio" value="Bad"> Bad

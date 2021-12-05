@@ -14,6 +14,23 @@
                     <p class="lorem_text">{{$post->description}}</p>
                     <p class="lorem_text"><strong>Category:</strong> {{$post->category->title}}</p>
                     <p class="lorem_text"><strong>Admin rating:</strong> {{$post->rating}}</p>
+
+                    <strong>Comments:</strong> <br>
+                    {{--                    Show Comment section--}}
+                            @foreach($post->comments as $comment)
+                                  - {{$comment->description}} <br>
+                            @endforeach
+
+                    {{--                    end show comment section--}}
+
+                    {{--input comment section--}}
+                    <form action="{{route('blog.comment',[$post->id])}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                            <br><strong>Comment Title: </strong><input type="text" placeholder="write comment title" class="mt-2 mx-2" name="title">
+                            <br><strong>Comment: </strong><input type="text" placeholder=" description" class="mt-2 mx-2" name="description">
+                        <input type="submit" value="comment" class="btn btn-success">
+                    </form>
+                    {{--end input comment section--}}
                     <div class="social_icon_main">
                         <div class="social_icon">
                             <ul>
@@ -22,6 +39,7 @@
                                 <li><a href="https://www.instagram.com/"><img src="{{asset('frontend/images/instagram-icon.png')}}"></a></li>
                             </ul>
                         </div>
+
                         <div class="read_bt"><a href="#">Read More</a></div>
                     </div>
                 </div>

@@ -4,37 +4,20 @@
     <div class="container-fluid">
         <div class="banner_section layout_padding">
             <h1 class="banner_taital">welcome to<br>MY blog</h1>
-            <div id="my_slider" class="carousel slide" data-ride="carousel">
+            <div id="my_slider" class="carousel slide" data-ride="carousel" >
 
-                <div class="carousel-inner">
-
-                    <div class="carousel-item active">
-
-                        <div class="image_main">
-                            <div class="container">
-                                <img src="{{asset('frontend/images/img-1.png')}}" class="image_1">
-                                <div class="contact_bt"><a href="{{route('blog.contact')}}">Contact Us</a></div>
-                            </div>
+                <div class="carousel-inner" >
+                    @foreach($categories as $category)
+                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}"  >
+                                <div class="image_main" >
+                                    <div class="container" >
+                                        <img src="{{asset('uploads/categoryFiles/'.$category->file_path)}}" class="image_1 h-50 p-3" >
+                                        <div class="contact_bt"><a href="{{route('blog.contact')}}">Contact Us</a></div>
+                                    </div>
+                                </div>
                         </div>
+                    @endforeach
 
-                    </div>
-
-                    <div class="carousel-item">
-                        <div class="image_main">
-                            <div class="container">
-                                <img src="{{asset('frontend/images/img-4.png')}}" class="image_1">
-                                <div class="contact_bt"><a href="{{route('blog.contact')}}">Contact Us</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="image_main">
-                            <div class="container">
-                                <img src="{{asset('frontend/images/img-3.png')}}" class="image_1">
-                                <div class="contact_bt"><a href="{{route('blog.contact')}}">Contact Us</a></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev"> <
@@ -49,7 +32,7 @@
     <!-- banner section end -->
 
 <!-- about section start -->
-    <div class="about_section layout_padding">
+    <div class="about_section layout_padding" style="margin-top: 200px">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-sm-12">
@@ -95,7 +78,7 @@
     </div>
     <!-- categories tag section end -->
 <!-- blog section start -->
-    <h2 class="most_text text-center m-3 text-info" >Blog posts:</h2>
+    <h2 class="most_text text-center m-3 text-info" >  <a class="nav-link" href="{{route('blog.blog')}}">Blog posts:</a></h2>
     @foreach($posts->take(2) as $post)
         <div class="about_section layout_padding">
             <div class="container">
@@ -175,6 +158,7 @@
 </div>
 <!-- newsletter section end -->
 <!-- recent section start -->
+    <h2 class="most_text text-center m-3 text-info" >  <a class="nav-link" href="{{route('blog.blog')}}">Feature posts:</a></h2>
     <div class="about_section layout_padding">
         <div class="container">
             <div class="row">
@@ -198,7 +182,7 @@
                 <div class="col-lg-4 col-sm-12">
                     <div class="newsletter_main">
                         <h1 class="recent_taital">Recent post</h1>
-                        @foreach($posts->take(2) as $post)
+                        @foreach($posts->take(3) as $post)
                             <div class="recent_box">
                                 <div class="recent_left">
                                     <div class="image_6"><img src="{{asset('uploads/postFiles/'.$post->file_path)}}"></div>
@@ -228,7 +212,7 @@
         <div class="touch_setion">
             <div class="box_main">
                 <div class="image_3 active">
-                    <a href="https://www.facebook.com"> <h4 class="who_text ">Get In Touch</h4> </a>
+                    <a href="https://www.linkedin.com"> <h4 class="who_text ">Get In Touch</h4> </a>
                 </div>
             </div>
             <div class="box_main">
