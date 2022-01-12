@@ -45,15 +45,15 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
 //        dd($request->all());
 
-        $post =  $this->commentModel->find($id);
+//        $post =  $this->commentModel->find($id);
         $value = $this->commentModel->create([
             'title' => $request->title,
             'description' => $request->description,
-            'post_id' => $post->id
+            'post_id' => $request->post_id
         ]);
         if ($value) {
             return redirect()->route('blog.blog');
@@ -62,6 +62,7 @@ class CommentController extends Controller
 
         }
     }
+
 
     /**
      * Display the specified resource.

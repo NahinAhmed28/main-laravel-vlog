@@ -17,7 +17,7 @@
                             <li><a href="#"><img src="{{asset('frontend/images/instagram-icon.png')}}" alt=""></a></li>
                         </ul>
                     </div>
-                    <div class="read_bt"><a href="#">Read More</a></div>
+
                 </div>
             </div>
             <div class="col-lg-4 col-sm-12">

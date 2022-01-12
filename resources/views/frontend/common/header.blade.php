@@ -14,7 +14,7 @@
                         <a class="nav-link" href="{{route('blog.about')}}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('blog.blog')}}">Blog</a>
+                        <a class="nav-link" href="{{route('blog.blog')}}">Blog's</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('blog.feature')}}">Features</a>

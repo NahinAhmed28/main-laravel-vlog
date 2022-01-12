@@ -15,28 +15,36 @@
                     <p class="lorem_text "><strong class="font-weight-bold">Category:</strong> {{$post->category->title}}</p>
                     <p class="lorem_text mb-3"><h5 class="font-weight-bold">Admin rating:</h5> <h5 class="text-warning font-weight-bold">{{$post->rating}}</h5> </p>
 
+
+
                     {{--input comment section--}}
                     <form action="{{route('blog.comment',[$post->id])}}" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" value="{{$post->id}}" name="post_id">
                         @csrf
                             <br><strong>Comment Title: </strong><input type="text" placeholder="write comment title" class="mt-2 mx-2" name="title">
                             <br><strong>Comment: </strong><input type="text" placeholder=" description" class="mt-2 mx-2" name="description">
                         <input type="submit" value="comment" class="btn btn-success">
                     </form>
                     {{--end input comment section--}}
+
+
+
                     {{--                    Show Comment section--}}
                     <div class="row mt-3">
                         <div class="col-md-3 font-weight-bold text-primary"
                                 <h3 > Comments:</h3>
                         </div>
-                        <div class="col-md-6 "
+                        <div class="col-md-6">
                             @foreach($post->comments as $comment)
                             <ul class="list-group">
-                                <li class="list-group-item" style=" border: none;"> <h5>{{$comment->title}}</h5>  <br>- {{$comment->description}} </li>
+                                <li class="list-group-item border border-bottom-1" style=" border: none;">- {{$comment->description}} </li>
                             </ul>
                             @endforeach
                         </div>
                     </div>
-                        {{--                    end show comment section--}}
+
+                        {{--end show comment section--}}
+
                     <div class="social_icon_main">
                         <div class="social_icon">
                             <ul>

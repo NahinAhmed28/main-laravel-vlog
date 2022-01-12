@@ -17,13 +17,13 @@
                                 <div class="contact_img"></div>
                             </div>
                             <div class="carousel-item">
-                                <div class="contact_img"></div>
+                                <img class="contact_img" src="{{asset('frontend/images/img-1.png')}}">
                             </div>
                             <div class="carousel-item">
-                                <div class="contact_img"></div>
+                                <img class="contact_img" src="{{asset('frontend/images/img-2.png')}}">
                             </div>
                             <div class="carousel-item">
-                                <div class="contact_img"></div>
+                                <img class="contact_img" src="{{asset('frontend/images/img-4.png')}}">
                             </div>
                         </div>
                     </div>

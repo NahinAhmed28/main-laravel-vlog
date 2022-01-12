@@ -49,14 +49,14 @@
                                 <li><a href="#"><img src="{{asset('frontend/images/instagram-icon.png')}}" alt=""></a></li>
                             </ul>
                         </div>
-                        <div class="read_bt"><a href="#">Read More</a></div>
+{{--                        <div class="read_bt"><a href="#">Read More</a></div>--}}
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12">
                     <div class="image_5"><img src="{{asset('frontend/images/img-5.png')}}"></div>
                     <h1 class="about_taital">About Us</h1>
                     <p class="about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
-                    <div class="read_bt_1"><a href="#">Read More</a></div>
+{{--                    <div class="read_bt_1"><a href="#">Read More</a></div>--}}
                 </div>
             </div>
         </div>
@@ -139,7 +139,7 @@
                                 <li><a href="#"><img src="{{asset('frontend/images/instagram-icon.png')}}" alt=""></a></li>
                             </ul>
                         </div>
-                        <div class="read_bt"><a href="{{route('blog.feature')}}">Read More</a></div>
+{{--                        <div class="read_bt"><a href="{{route('blog.feature')}}">Read More</a></div>--}}
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12">
@@ -195,13 +195,13 @@
                                 <div class="contact_img"></div>
                             </div>
                             <div class="carousel-item">
-                                <div class="contact_img"></div>
+                                <img class="contact_img" src="{{asset('frontend/images/img-1.png')}}">
                             </div>
                             <div class="carousel-item">
-                                <div class="contact_img"></div>
+                                <img class="contact_img" src="{{asset('frontend/images/img-2.png')}}">
                             </div>
                             <div class="carousel-item">
-                                <div class="contact_img"></div>
+                                <img class="contact_img" src="{{asset('frontend/images/img-4.png')}}">
                             </div>
                         </div>
                     </div>
