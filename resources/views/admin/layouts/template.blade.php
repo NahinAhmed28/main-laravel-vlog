@@ -13,6 +13,7 @@
                 {{--                    <a href="{{route('groups.index')}}" class="list-group-item list-group-item-action bg-dark text-white">Groups</a>--}}
                 <a href="{{route('users.index')}}" class="list-group-item list-group-item-action bg-dark text-white">Registered Users</a>
 
+
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
