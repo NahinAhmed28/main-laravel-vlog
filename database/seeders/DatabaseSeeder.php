@@ -44,7 +44,13 @@ class DatabaseSeeder extends Seeder
             'created_at'=>	now(),
             'updated_at'=>now(),
         ]);
+        $this->call(CategorySeeder::class);
+        $this->command->info('Category table seeded!');
 
+        $this->call(PostSeeder::class);
+        $this->command->info('post table seeded!');
 
+        $this->call(CommentSeeder::class);
+        $this->command->info('comment table seeded!');
     }
 }

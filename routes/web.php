@@ -37,7 +37,7 @@ Route::middleware(['admin'])->group(function () {
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'userAdmin'])->name('admin.home');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(  function () {
 
     Route::get('/user', [HomeController::class, 'userHome'])->name('user.home');
     Route::get('/user/categories', [CategoryController::class, 'userIndex'])->name('user.category');

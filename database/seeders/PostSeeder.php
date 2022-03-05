@@ -4,8 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Faker;
-
-class CategorySeeder extends Seeder
+class PostSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,20 +13,17 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-
-
         $faker = Faker\Factory::create();
 
         for ($i = 0; $i < 10; $i++) {
-            \App\Models\Category::create([
-                'title' => $faker->realText(30),
-                'description' => $faker->realText(200),
+            \App\Models\Post::create([
+                'category_id' => 2,
+                'title' => $faker->realText(10),
+                'description' => $faker->realText(100),
+                'comment' => $faker->randomNumber(5),
                 'file_path' => 'abs',
-                'status' => '1'
-
+                'status' => '1',
             ]);
         }
-
-
     }
 }
