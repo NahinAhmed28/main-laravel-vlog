@@ -30,6 +30,8 @@ Route::get('/blog/contact', [App\Http\Controllers\Frontend\ContactController::cl
 Route::post('/blog/contact/store', [App\Http\Controllers\Frontend\ContactController::class, 'store'])->name('blog.contact.store');
 Route::get('/blog/feature', [App\Http\Controllers\Frontend\FeatureController::class, 'index'])->name('blog.feature');
 Route::get('/blog/categories', [App\Http\Controllers\Frontend\CategoryController::class, 'index'])->name('blog.category');
+Route::post('/blog/comment', [App\Http\Controllers\Frontend\CommentController::class, 'store'])->name('blog.comment');
+
 
 
 

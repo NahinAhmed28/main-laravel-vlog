@@ -23,7 +23,7 @@
                                 <li><a href="#"><img src="{{asset('frontend/images/instagram-icon.png')}}" alt=""></a></li>
                             </ul>
                         </div>
-                        <div class="read_bt"><a href="#">Read More</a></div>
+
                     </div>
                     @endforeach
                 </div>
@@ -32,7 +32,7 @@
                     <div class="image_5"><img src="{{asset('frontend/images/img-5.png')}}"></div>
                     <h1 class="about_taital">About Us</h1>
                     <p class="about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
-                    <div class="read_bt_1"><a href="#">Read More</a></div>
+
                 </div>
 
             </div>
