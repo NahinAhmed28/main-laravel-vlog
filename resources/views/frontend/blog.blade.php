@@ -32,7 +32,7 @@
                     {{--                    Show Comment section--}}
                     <div class="row mt-3">
                         <div class="col-md-3 font-weight-bold text-primary"
-                                <h3 > Comments:</h3>
+                                <h3> Comments:</h3>
                         </div>
                         <div class="col-md-6">
                             @foreach($post->comments as $comment)
@@ -53,8 +53,6 @@
                                 <li><a href="https://www.instagram.com/"><img src="{{asset('frontend/images/instagram-icon.png')}}"></a></li>
                             </ul>
                         </div>
-
-
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12">

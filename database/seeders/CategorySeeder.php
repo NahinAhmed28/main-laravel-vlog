@@ -22,7 +22,7 @@ class CategorySeeder extends Seeder
             \App\Models\Category::create([
                 'title' => $faker->realText(30),
                 'description' => $faker->realText(200),
-                'file_path' => $faker->imageUrl(400, 300),
+                'file_path' =>'abs',
                 'status' => '1'
 
             ]);

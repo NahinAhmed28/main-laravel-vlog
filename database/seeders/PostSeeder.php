@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use File;
 use Faker;
 class PostSeeder extends Seeder
 {
@@ -23,7 +21,7 @@ class PostSeeder extends Seeder
                 'title' => $faker->realText(10),
                 'description' => $faker->realText(100),
                 'comment' => $faker->randomNumber(5),
-                'file_path' => $faker->imageUrl(400, 300),
+                'file_path' => 'abs',
                 'status' => '1',
             ]);
         }
