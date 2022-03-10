@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Faker;
+use Illuminate\Support\Facades\File;
+
 class PostSeeder extends Seeder
 {
     /**
@@ -15,9 +17,9 @@ class PostSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
         $filePath = public_path('uploads/postFiles');
-
-
-
+        if(!File::exists($filePath)){
+            File::makeDirectory($filePath);
+        }
         //end copy
         for ($i = 0; $i < 10; $i++) {
             \App\Models\Post::create([

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Faker;
+use Illuminate\Support\Facades\File;
 
 class CategorySeeder extends Seeder
 {
@@ -18,7 +19,10 @@ class CategorySeeder extends Seeder
 
         $faker = Faker\Factory::create();
         $filePath = public_path('uploads/categoryFiles');
-        for ($i = 0; $i < 10; $i++) {
+        if(!File::exists($filePath)){
+            File::makeDirectory($filePath);
+        }
+        for ($i = 0; $i < 3; $i++) {
             \App\Models\Category::create([
                 'title' => $faker->realText(30),
                 'description' => $faker->realText(200),
