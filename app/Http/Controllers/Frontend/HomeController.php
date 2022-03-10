@@ -24,7 +24,7 @@ class HomeController extends Controller
     {
         $data = [
             'posts' =>$this->postModel->get(),
-            'categories' =>  $this->categoryModel->get()
+            'categories' =>  $this->categoryModel->orderby('id','asc')->get()
         ];
 // dd($data);
         return view('frontend.home',$data);
