@@ -17,7 +17,6 @@
                                 </div>
                         </div>
                     @endforeach
-
                 </div>
 
                 <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev"> <
